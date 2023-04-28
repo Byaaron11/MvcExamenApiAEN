@@ -1,0 +1,42 @@
+﻿@model IEnumerable<MvcExamenApiAEN.Models.Personaje>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>PERSONAJES</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Imagen)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                    <img src="@item.Imagen" style="width: 200px; height:300px;" />
+            </td>
+
+            <td>
+                <a asp-action="Details" asp-controller="Perosnajes" asp-route-id="@item.IdPersonaje" class="btn btn-info">Details</a>
+                <a asp-action="Update" asp-controller="Personajes" asp-route-id="@item.IdPersonaje" class="btn btn-warning">Update</a>
+                    <a asp-action="Delete" asp-controller="Personajes" asp-route-idpersonaje="@item.IdPersonaje" asp-route-idserie="@item.IdSerie" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
